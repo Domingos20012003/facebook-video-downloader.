@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Baixar Vídeos do Facebook - Downloader Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4267B2;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .download-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #4267B2;
+        }
+
+        .download-btn {
+            background: #42b883;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .download-btn:hover {
+            background: #369870;
+        }
+
+        .quality-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .quality-btn {
+            background: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .quality-btn:hover {
+            background: #5a6268;
+        }
+
+        .instructions {
+            margin-top: 30px;
+        }
+
+        .instructions h2 {
+            color: #4267B2;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .step {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4267B2;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            background: #4267B2;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .quality-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 Facebook Video Downloader</h1>
+            <p>Baixe vídeos do Facebook de forma rápida e gratuita</p>
+        </div>
+
+        <div class="main-content">
+            <div class="download-section">
+                <h2>Cole o link do vídeo do Facebook aqui:</h2>
+                <input type="url" class="url-input" id="videoUrl" placeholder="https://www.facebook.com/watch?v=...">
+                <button class="download-btn" onclick="processVideo()">🔽 Baixar Vídeo</button>
+                
+                <div class="quality-buttons" id="qualityButtons" style="display: none;">
+                    <button class="quality-btn" onclick="downloadVideo('hd')">HD (720p)</button>
+                    <button class="quality-btn" onclick="downloadVideo('fullhd')">Full HD (1080p)</button>
+                    <button class="quality-btn" onclick="downloadVideo('4k')">4K (2160p)</button>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h2>📋 Como usar:</h2>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Copie o link:</strong> Vá ao Facebook, encontre o vídeo que deseja baixar e copie o link da URL.
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Cole aqui:</strong> Cole o link no campo acima e clique em "Baixar Vídeo".
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>Escolha a qualidade:</strong> Selecione a qualidade desejada (HD, Full HD ou 4K).
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <strong>Download:</strong> O vídeo será baixado automaticamente para seu dispositivo.
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Super Rápido</h3>
+                    <p>Download em segundos</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🆓</div>
+                    <h3>100% Gratuito</h3>
+                    <p>Sem taxas ou assinaturas</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Funciona em qualquer dispositivo</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Seguro</h3>
+                    <p>Sem vírus ou malware</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Facebook Video Downloader - Todos os direitos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        function processVideo() {
+            const url = document.getElementById('videoUrl').value;
+            
+            if (!url) {
+                alert('Por favor, cole o link do vídeo do Facebook!');
+                return;
+            }
+            
+            if (!url.includes('facebook.com') && !url.includes('fb.watch')) {
+                alert('Por favor, insira um link válido do Facebook!');
+                return;
+            }
+            
+            // Simula o processamento
+            document.querySelector('.download-btn').innerHTML = '⏳ Processando...';
+            
+            setTimeout(() => {
+                document.querySelector('.download-btn').innerHTML = '✅ Vídeo Processado!';
+                document.getElementById('qualityButtons').style.display = 'flex';
+            }, 2000);
+        }
+        
+        function downloadVideo(quality) {
+            const qualityNames = {
+                'hd': 'HD (720p)',
+                'fullhd': 'Full HD (1080p)',
+                '4k': '4K (2160p)'
+            };
+            
+            alert(`Iniciando download em ${qualityNames[quality]}!\n\nNota: Esta é uma demonstração. Em um site real, o download começaria agora.`);
+            
+            // Reset
+            setTimeout(() => {
+                document.querySelector('.download-btn').innerHTML = '🔽 Baixar Vídeo';
+                document.getElementById('qualityButtons').style.display = 'none';
+                document.getElementById('videoUrl').value = '';
+            }, 3000);
+        }
+        
+        // Validação em tempo real
+        document.getElementById('videoUrl').addEventListener('input', function() {
+            const url = this.value;
+            if (url && !url.includes('facebook.com') && !url.includes('fb.watch')) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+    </script>
+</body>
+  </html>
+  
